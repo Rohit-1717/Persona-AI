@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173","https://persona-ai-dxg8.onrender.com"],  # Adjust this for your frontend origin
+    allow_origins=["http://localhost:5173","https://persona-ai-git-main-rohit-vishwakarmas-projects-95176ae8.vercel.app"],  # Adjust this for your frontend origin
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
