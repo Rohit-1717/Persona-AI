@@ -23,7 +23,7 @@ function Home() {
     if (!question.trim()) return;
     setLoading(true);
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/ask", {
+      const res = await axios.post("https://persona-ai-dxg8.onrender.com/api/ask", {
         mentor,
         question,
       });
