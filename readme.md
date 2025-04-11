@@ -18,7 +18,7 @@ Welcome to **PersonaAI** – an AI-powered chatbot that lets you interact with v
 
 ## 🔥 Live Demo
 
-- 🌍 Visit now: [https://personaai.vercel.app](https://personaai.vercel.app)
+- 🌍 Visit now: [https://personaai.vercel.app](https://persona-ai-git-main-rohit-vishwakarmas-projects-95176ae8.vercel.app/)
 
 
 ---
