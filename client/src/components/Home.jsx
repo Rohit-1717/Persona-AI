@@ -26,7 +26,7 @@ const handleAsk = async () => {
   setLoading(true);
   setResponse("");
   try {
-    const res = await axios.post(`https://persona-ai-dxg8.onrender.com/api/ask`, {
+    const res = await axios.post("https://persona-ai-dxg8.onrender.com/api/ask", {
       mentor,
       question,
     });
