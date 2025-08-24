@@ -18,24 +18,41 @@ function Home() {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+const API_URL = import.meta.env.VITE_API_URL;
 
-  const handleAsk = async () => {
-    if (!question.trim()) return;
-    setLoading(true);
-    try {
-      const res = await axios.post("https://persona-ai-dxg8.onrender.com/api/ask", {
-        mentor,
-        question,
-      });
+const handleAsk = async () => {
+  if (!question.trim()) return;
+
+  setLoading(true);
+  setResponse("");
+  try {
+    const res = await axios.post(`${API_URL}/api/ask`, {
+      mentor,
+      question,
+    });
+
+    if (res.data?.reply) {
       setResponse(res.data.reply);
-      setQuestion(""); // ✅ clear the input after successful response
-    } catch (err) {
-      console.error(err);
-      setResponse("❌ Something went wrong.");
-    } finally {
-      setLoading(false);
+    } else {
+      setResponse("⚠️ Unexpected response format from server.");
     }
-  };
+
+    setQuestion("");
+  } catch (err) {
+    console.error("API Error:", err);
+
+    if (err.response) {
+      setResponse(`❌ Server Error: ${err.response.status} - ${err.response.statusText}`);
+    } else if (err.request) {
+      setResponse("🌐 No response from server. Please check backend.");
+    } else {
+      setResponse(`⚠️ Error: ${err.message}`);
+    }
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="max-w-xl mx-auto p-6 space-y-6 bg-base-100 shadow-xl rounded-xl border border-base-300 mt-10">
