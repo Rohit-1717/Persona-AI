@@ -19,6 +19,10 @@ class MentorQuery(BaseModel):
     question: str
 
 
+@app.get("/")
+async def ask_question():
+    return {"status": 200, "response :": "Server is running..."}
+
 @app.post("/api/ask")
 async def ask_question(query: MentorQuery):
     response = ask_your_mentor(query.mentor, query.question)

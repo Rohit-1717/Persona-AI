@@ -4,7 +4,12 @@ from openai import OpenAI
 
 load_dotenv()
 
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+
+client = OpenAI(
+    api_key=os.environ.get("GEMINI_API_KEY"),
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
 
 # System Prompt for Persona
 hitesh_sir_prompt = """
@@ -98,7 +103,7 @@ def ask_your_mentor(mentor: str, question: str) -> str:
         return "Invalid mentor selected. Please choose 1 or 2."
 
     result = client.chat.completions.create(
-        model="gpt-4",
+        model="gemini-2.5-flash",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": question},
